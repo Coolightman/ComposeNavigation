@@ -1,20 +1,25 @@
 package com.example.composenavigation.screen
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.example.composenavigation.model.Screen
+import com.example.composenavigation.screen.destinations.DetailScreenDestination
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @OptIn(ExperimentalMaterial3Api::class)
+@Destination(start = true)
 @Composable
-fun MainScreen(navController: NavController) {
-    var text by remember {
-        mutableStateOf("")
-    }
+fun MainScreen(
+    navigator: DestinationsNavigator
+) {
+    var text by remember { mutableStateOf("") }
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -25,19 +30,19 @@ fun MainScreen(navController: NavController) {
     ) {
         OutlinedTextField(
             value = text,
-            label = { Text(text = "Your name..")},
-            maxLines = 1    ,
+            label = { Text(text = "Your name..") },
+            maxLines = 1,
             onValueChange = {
                 text = it
             },
-            modifier = Modifier.width(200.dp)
+            modifier = Modifier.fillMaxWidth(0.8f)
         )
         Spacer(modifier = Modifier.height(12.dp))
         Button(modifier = Modifier
             .align(Alignment.CenterHorizontally),
             onClick = {
                 if (text.isNotEmpty()) {
-                    navController.navigate(Screen.DetailScreen.withArgs(text))
+                    navigator.navigate(DetailScreenDestination(text))
                 }
             }) {
             Text(text = "To detail screen")
