@@ -6,8 +6,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.composenavigation.model.Screen
 import com.example.composenavigation.screen.DetailScreen
 import com.example.composenavigation.screen.MainScreen
+import com.example.composenavigation.screen.PostScreen
 
 @Composable
 fun Navigation() {
@@ -23,9 +25,20 @@ fun Navigation() {
                     type = NavType.StringType
                 }
             )
-        ){ entry ->
-//            DetailScreen(name = entry.arguments?.getString("name")!!)
-            entry.arguments?.getString("name")?.let { DetailScreen(name = it) }
+        ) { entry ->
+            entry.arguments?.getString("name")
+                ?.let { DetailScreen(navController = navController, name = it) }
+        }
+        composable(
+            route = Screen.PostScreen.route + "/{user}",
+            arguments = listOf(
+                navArgument("user") {
+                    type = NavType.StringType
+                }
+            )
+        ) { entry ->
+            entry.arguments?.getString("user")
+                ?.let { PostScreen( user = it) }
         }
     }
 }

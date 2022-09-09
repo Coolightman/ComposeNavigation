@@ -7,7 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.composenavigation.Screen
+import com.example.composenavigation.model.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -15,6 +15,7 @@ fun MainScreen(navController: NavController) {
     var text by remember {
         mutableStateOf("")
     }
+
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -24,7 +25,7 @@ fun MainScreen(navController: NavController) {
     ) {
         OutlinedTextField(
             value = text,
-            label = { Text(text = "Name")},
+            label = { Text(text = "Your name..")},
             maxLines = 1    ,
             onValueChange = {
                 text = it

@@ -1,8 +1,9 @@
-package com.example.composenavigation
+package com.example.composenavigation.model
 
 sealed class Screen(val route: String) {
     object MainScreen: Screen("main_screen")
     object DetailScreen: Screen("detail_screen")
+    object PostScreen: Screen("post_screen")
 
     fun withArgs(vararg args: String): String{
         return buildString {
