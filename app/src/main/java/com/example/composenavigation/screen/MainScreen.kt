@@ -14,7 +14,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Destination(start = true)
+@Destination
 @Composable
 fun MainScreen(
     navigator: DestinationsNavigator
