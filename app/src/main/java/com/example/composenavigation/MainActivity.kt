@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import com.example.composenavigation.screen.NavGraphs
@@ -17,8 +18,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeNavigationTheme {
-                DefineStatusBarColor()
-                DestinationsNavHost(navGraph = NavGraphs.root)
+                Surface(color = MaterialTheme.colorScheme.background) {
+                    DefineStatusBarColor()
+                    DestinationsNavHost(navGraph = NavGraphs.root)
+                }
             }
         }
     }
