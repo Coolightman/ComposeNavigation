@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavHostController
 import com.example.composenavigation.R
 import com.example.composenavigation.screen.destinations.MainScreenDestination
 import com.example.composenavigation.screen.destinations.SplashScreenDestination
@@ -45,8 +46,8 @@ fun SplashScreen(
             )
         )
         delay(SPLASH_DELAY_MILLIS)
+
         navigator.navigate(MainScreenDestination()) {
-            //        remove splash from stack
             popUpTo(SplashScreenDestination.route) {
                 inclusive = true
             }
