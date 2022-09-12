@@ -70,7 +70,7 @@ fun DetailScreen(
         Button(modifier = Modifier
             .align(Alignment.CenterHorizontally),
             onClick = {
-                if (isValidData(userName, age.toInt(), email)) {
+                if (isValidData(userName, age, email)) {
                     val user = User(userName, age.toInt(), email, System.currentTimeMillis())
                     navigator.navigate(PostScreenDestination(user))
 
@@ -83,6 +83,6 @@ fun DetailScreen(
 
 private fun isValidData(
     userName: String,
-    age: Int,
+    age: String,
     email: String
-) = userName.isNotEmpty() && age != 0 && email.isNotEmpty()
+) = userName.isNotEmpty() && age.isNotEmpty() && email.isNotEmpty()
